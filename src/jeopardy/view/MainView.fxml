@@ -3,24 +3,28 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label text="Welcome to Jeopardy">
-         <font>
-            <Font name="KacstBook" size="26.0" />
-         </font>
-         <padding>
-            <Insets bottom="30.0" top="30.0" />
-         </padding>
-      </Label>
-      <Button mnemonicParsing="false" text="View avialble questoin" />
-      <Button mnemonicParsing="false" text="Ask a question" />
-      <Button mnemonicParsing="false" text="view current winning" />
-      <Button mnemonicParsing="false" text="reset game" />
-      <Button mnemonicParsing="false" text="quit" />
-   </children>
-</VBox>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.view.MainController">
+   <center>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Welcome to Jeopardy">
+               <font>
+                  <Font name="KacstBook" size="26.0" />
+               </font>
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
+            </Label>
+            <Button mnemonicParsing="false" text="View avialble questoin" />
+            <Button mnemonicParsing="false" text="Ask a question" />
+            <Button mnemonicParsing="false" onAction="#showCurrentWinningView" text="view current winning" />
+            <Button mnemonicParsing="false" onAction="#showCurrentWinningView" text="reset game" />
+            <Button mnemonicParsing="false" text="quit" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
