@@ -6,22 +6,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.controller.GameOverViewController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Thank you for playing!" />
             <Label text="Your final score is " />
-            <Label text="\$10" />
+            <Label fx:id="winningLabel" text="\$10" />
          </children>
       </VBox>
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Rest Game" />
-            <Button mnemonicParsing="false" text="Return to Main Menu" />
+            <Button mnemonicParsing="false" onAction="#resetButtonClick" text="Reset Game" />
+            <Button mnemonicParsing="false" onAction="#goMainMenu" text="Return to Main Menu" />
          </children>
       </HBox>
    </bottom>

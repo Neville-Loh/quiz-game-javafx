@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.view.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.controller.MainController">
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -20,10 +20,10 @@
                </padding>
             </Label>
             <Button mnemonicParsing="false" text="View avialble questoin" />
-            <Button mnemonicParsing="false" text="Ask a question" />
+            <Button mnemonicParsing="false" onAction="#showQuestionSelectView" text="Ask a question" />
             <Button mnemonicParsing="false" onAction="#showCurrentWinningView" text="view current winning" />
-            <Button mnemonicParsing="false" text="reset game" />
-            <Button mnemonicParsing="false" text="quit" />
+            <Button mnemonicParsing="false" onAction="#resetButtonClick" text="reset game" />
+            <Button mnemonicParsing="false" onAction="#quitButtonClick" text="quit" />
          </children>
       </VBox>
    </center>

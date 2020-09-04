@@ -6,9 +6,9 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import jeopardy.controller.CurrentWinningController;
+import jeopardy.controller.MainController;
 import jeopardy.model.QuizModel;
-import jeopardy.view.CurrentWinningController;
-import jeopardy.view.MainController;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -84,31 +84,6 @@ public class Main extends Application {
 //	}
 	
 	
-	private void resetGame() {
-		System.out.println("reseting game");
-	}
-	
-	private void quit() {
-		System.out.println("quting game");
-	}
-	
-	
-//	public void showCurrentWinningView() {
-//		System.out.println("showCurrentWinning is being called");
-//		try {
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(Main.class.getResource("view/CurrentWinningView.fxml"));
-//			BorderPane loadView = loader.load();
-//			
-//			_mainLayout.setCenter(loadView);
-//			CurrentWinningController currentWinningController = loader.getController();
-//			currentWinningController.setMainApp(this);
-//
-//
-//		} catch (IOException e) {
-//			throw new JeopardyRuntimeException(e.getMessage());
-//		}
-//	}
 	
 	public static void main(String[] args) {
 		launch(args);
