@@ -25,7 +25,10 @@ public class QuizModel {
 		return _winning;
 	}
 	
-	
+	/**
+	 * Create a dummy category for testing purposes.
+	 * @return
+	 */
 	private ArrayList<Category> getDummyCats(){
 		Question Q1 = new Question("Why is SE so hard c1q1", "cause I am dumb" ,100);
 		Question Q2 = new Question("Why is SE so hard c1q2", "cat 1 q2 ans" ,200);

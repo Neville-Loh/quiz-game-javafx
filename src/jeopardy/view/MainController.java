@@ -3,7 +3,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -12,30 +15,15 @@ import jeopardy.Main;
 
 public class MainController {
 	
-	private Main _main;
-	
 	@FXML
-	private void showCurrentWinningView(){
-		_main.showCurrentWinningView();
+	private void showCurrentWinningView(ActionEvent event) throws IOException{
+		Parent WinningViewParrent = FXMLLoader.load(getClass().getResource("CurrentWinningView.fxml"));
+		Scene scene = new Scene(WinningViewParrent);
+		
+		// Gets the stage information 
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		window.setScene(scene);
 	}
-//	
-//	@FXML
-//	private void showCurrentWinningView(){
-//		Main.showCurrentWinningView();
-//	}
-//	
-//	@FXML
-//	private void showCurrentWinningView(){
-//		Main.showCurrentWinningView();
-//	}
-//	
-//	@FXML
-//	private void 
 	
-	
-	public void setMainApp(Main main) {
-		_main = main;
-	}
-
 
 }

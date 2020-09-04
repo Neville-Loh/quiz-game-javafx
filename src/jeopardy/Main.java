@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import jeopardy.view.CurrentWinningController;
 import jeopardy.view.MainController;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,8 +23,8 @@ import javafx.scene.media.MediaView;
 
 
 public class Main extends Application {
-	private static Stage primaryStage;
-	private static BorderPane _mainLayout;
+	private Stage primaryStage;
+	private BorderPane _mainLayout;
 	
 	
 	@Override
@@ -46,15 +47,21 @@ public class Main extends Application {
 
 	}
 	public void showMainView() throws IOException {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
-		_mainLayout = loader.load();
-		Scene scene = new Scene(_mainLayout);
 		
-		MainController mainControler = loader.getController();
-		mainControler.setMainApp(this);
+		Parent root = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
+		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+		
+//		FXMLLoader loader = new FXMLLoader();
+//		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
+//		_mainLayout = loader.load();
+//		Scene scene = new Scene(_mainLayout);
+//		
+////		MainController mainControler = loader.getController();
+////		mainControler.setMainApp(this);
+//		primaryStage.setScene(scene);
+//		primaryStage.show();
 	}
 	
 	
@@ -82,22 +89,22 @@ public class Main extends Application {
 	}
 	
 	
-	public void showCurrentWinningView() {
-		System.out.println("showCurrentWinning is being called");
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(Main.class.getResource("view/CurrentWinningView.fxml"));
-			BorderPane loadView = loader.load();
-			
-			_mainLayout.setCenter(loadView);
-			CurrentWinningController currentWinningController = loader.getController();
-			currentWinningController.setMainApp(this);
-
-
-		} catch (IOException e) {
-			throw new JeopardyRuntimeException(e.getMessage());
-		}
-	}
+//	public void showCurrentWinningView() {
+//		System.out.println("showCurrentWinning is being called");
+//		try {
+//			FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(Main.class.getResource("view/CurrentWinningView.fxml"));
+//			BorderPane loadView = loader.load();
+//			
+//			_mainLayout.setCenter(loadView);
+//			CurrentWinningController currentWinningController = loader.getController();
+//			currentWinningController.setMainApp(this);
+//
+//
+//		} catch (IOException e) {
+//			throw new JeopardyRuntimeException(e.getMessage());
+//		}
+//	}
 	
 	public static void main(String[] args) {
 		launch(args);
