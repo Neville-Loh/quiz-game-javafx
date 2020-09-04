@@ -32,4 +32,13 @@ public class Category {
 	public String getTitle() {
 		return _title;
 	}
+	
+	/**
+	 * Get the question from a list of question
+	 * @param index i
+	 * @return ith question in the list.
+	 */
+	public Question get(int i) {
+		return _questions.get(i);
+	}
 }

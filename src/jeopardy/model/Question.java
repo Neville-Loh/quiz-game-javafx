@@ -25,7 +25,7 @@ public class Question {
 	
 	/**
 	 * Get Method, get the answer of the question
-	 * @return
+	 * @return Answer
 	 */
 	public String getAnswer() {
 		return _answer;
@@ -33,7 +33,7 @@ public class Question {
 	
 	/**
 	 * Get the score of the question
-	 * @return
+	 * @return question Score
 	 */
 	public int getScore() {
 		return _score;

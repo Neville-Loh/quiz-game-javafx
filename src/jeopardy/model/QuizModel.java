@@ -25,6 +25,11 @@ public class QuizModel {
 		return _winning;
 	}
 	
+	
+	public Question gettestQuestion() {
+		return _cats.get(0).get(1);
+	}
+	
 	/**
 	 * Create a dummy category for testing purposes.
 	 * @return

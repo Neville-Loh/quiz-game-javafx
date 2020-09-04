@@ -6,6 +6,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import jeopardy.model.QuizModel;
 import jeopardy.view.CurrentWinningController;
 import jeopardy.view.MainController;
 import javafx.scene.Parent;
@@ -25,11 +26,13 @@ import javafx.scene.media.MediaView;
 public class Main extends Application {
 	private Stage primaryStage;
 	private BorderPane _mainLayout;
+	private static QuizModel model;
 	
 	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		
+		model = new QuizModel();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Jepardy");
 //		FXMLLoader loader = new FXMLLoader();
@@ -52,6 +55,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+
 		
 //		FXMLLoader loader = new FXMLLoader();
 //		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
@@ -108,5 +112,8 @@ public class Main extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+	}
+	public static QuizModel getQuizModel() {
+		return model;
 	}
 }
