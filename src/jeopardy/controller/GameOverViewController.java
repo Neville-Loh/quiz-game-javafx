@@ -26,12 +26,7 @@ public class GameOverViewController implements Initializable {
 	
 	@FXML
 	private void goMainMenu(ActionEvent event) throws IOException {
-		Parent WinningViewParrent = FXMLLoader.load(getClass().getResource("../view/MainView.fxml"));
-		Scene scene = new Scene(WinningViewParrent);
-
-		// Gest the stage information
-		Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+		ScreenController.goMainMenu(getClass(), event);
 	}
 	
 	@FXML
@@ -46,12 +41,8 @@ public class GameOverViewController implements Initializable {
 		System.out.println("Changing to gameover scene");
 		// #LED
 		model = Main.getQuizModel();
-		
-		System.out.println("Changing to gameover scene2");
 		String scoreStr = Integer.toString(model.getWinning());
-		System.out.println("Changing to gameover scene3");
 		winningLabel.setText(scoreStr);
-		System.out.println("Changing to gameover scene4");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

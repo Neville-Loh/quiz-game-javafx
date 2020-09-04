@@ -16,37 +16,29 @@ import javafx.scene.control.Label;
 
 
 import jeopardy.Main;
+import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
 public class QuestionViewController implements Initializable{
 	
 	private QuizModel model;
+	private Question question;
 	
 	@FXML private Label questionLabel;
 	
 	
 	@FXML
 	private void goMainMenu(ActionEvent event) throws IOException{
-		//#DEL
-		System.out.println("goQuestoinView");
-		//LED
-		
-		Parent WinningViewParrent = FXMLLoader.load(getClass().getResource("../view/MainView.fxml"));
-		Scene scene = new Scene(WinningViewParrent);
-		
-		// Gets the stage information 
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+		ScreenController.goMainMenu(getClass(), event);
 		
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//#DEL
-		System.out.println("Changing quetsion view");
-		//#LED
+		System.out.println("Quesiton view init");
 		model = Main.getQuizModel();
-		questionLabel.setText("Your ass");
+		question = model.getActiveQuestion();
+		questionLabel.setText(question.toString());
 		
 	}
 	

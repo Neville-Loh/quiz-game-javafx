@@ -12,23 +12,13 @@ public class MainController {
 	
 	@FXML
 	private void showQuestionSelectView(ActionEvent event) throws IOException{
-		Parent parent = FXMLLoader.load(getClass().getResource("../view/QuestionSelectView.fxml"));
-		Scene scene = new Scene(parent);
-		
-		// Gets the stage information 
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+		ScreenController.goQuestionSelect(getClass(), event);
 	}
 	
 	
 	@FXML
 	private void showCurrentWinningView(ActionEvent event) throws IOException{
-		Parent parent = FXMLLoader.load(getClass().getResource("../view/CurrentWinningView.fxml"));
-		Scene scene = new Scene(parent);
-		
-		// Gets the stage information 
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+		ScreenController.goCurrentWinning(getClass(), event);
 	}
 	
 	/**
@@ -38,12 +28,7 @@ public class MainController {
 	 */
 	@FXML
 	private void resetButtonClick(ActionEvent event) throws IOException{
-		Parent parent = FXMLLoader.load(getClass().getResource("../view/QuestionView.fxml"));
-		Scene scene = new Scene(parent);
-		
-		// Gets the stage information 
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+		ScreenController.goQuestion(getClass(), event);
 	}
 	/**
 	 * Testing purpose

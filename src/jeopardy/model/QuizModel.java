@@ -7,9 +7,10 @@ public class QuizModel {
 	private int _total_question_left;
 	private ArrayList<Category> _cats;
 	
+	private Question _activeQuestion;
+	
 	
 	public QuizModel() {
-		
 		_winning = 1000;
 		_total_question_left = 20;
 		_cats = getDummyCats();
@@ -18,14 +19,34 @@ public class QuizModel {
 	}
 	
 	/**
-	 * Get the winning or score of the player
-	 * @return winning
+	 * Set Method. set the active question
+	 * @param question
+	 */
+	public void setActiveQuestion(Question question) {
+		_activeQuestion = question;
+	}
+	/**
+	 * Get Method
+	 * @return current selected question
+	 */
+	public Question getActiveQuestion() {
+		return _activeQuestion;
+	}
+	
+	/**
+	 * Get Method
+	 * @return score of the player
 	 */
 	public int getWinning() {
 		return _winning;
 	}
 	
 	
+	//---------------------------------------------------------------------------------------------------------
+	/**
+	 * Get a dummy test question for testing purposes.
+	 * @return
+	 */
 	public Question gettestQuestion() {
 		return _cats.get(0).get(1);
 	}

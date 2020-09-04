@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import jeopardy.Main;
+import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
 public class QuestionSelectViewController implements Initializable{
@@ -24,23 +25,18 @@ private QuizModel model;
 	
 	@FXML
 	private void goMainMenu(ActionEvent event) throws IOException{
-		//#DEL
-		System.out.println("Question Select go Main Menu");
-		//LED
+		ScreenController.goMainMenu(getClass(), event);
+		// get a qeutsion
+		Question question = model.gettestQuestion();
 		
-		Parent WinningViewParrent = FXMLLoader.load(getClass().getResource("../view/MainView.fxml"));
-		Scene scene = new Scene(WinningViewParrent);
-		
-		// Gets the stage information 
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
-		
+		model.setActiveQuestion(question);
+		ScreenController.goQuestion(getClass(), event);
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//#DEL
-		System.out.println("Changing quetsion view");
+		System.out.println("Select quetsion view");
 		//#LED
 		model = Main.getQuizModel();
 	}
