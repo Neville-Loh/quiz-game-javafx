@@ -22,7 +22,7 @@ import javafx.scene.media.MediaView;
 
 
 public class Main extends Application {
-	private Stage primaryStage;
+	private static Stage primaryStage;
 	private static BorderPane _mainLayout;
 	
 	
@@ -45,14 +45,14 @@ public class Main extends Application {
 		
 
 	}
-	private void showMainView() throws IOException {
+	public void showMainView() throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
 		_mainLayout = loader.load();
 		Scene scene = new Scene(_mainLayout);
 		
-		MainController c = loader.getController();
-		c.setMainApp(this);
+		MainController mainControler = loader.getController();
+		mainControler.setMainApp(this);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -88,9 +88,11 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/CurrentWinningView.fxml"));
 			BorderPane loadView = loader.load();
-//			CurrentWinningController c = loader.getController();
-//			c.setMainApp(this);
+			
 			_mainLayout.setCenter(loadView);
+			CurrentWinningController currentWinningController = loader.getController();
+			currentWinningController.setMainApp(this);
+
 
 		} catch (IOException e) {
 			throw new JeopardyRuntimeException(e.getMessage());

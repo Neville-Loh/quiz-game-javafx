@@ -16,6 +16,7 @@ public class CurrentWinningController {
 	
 	@FXML
 	private void goMainMenu() throws IOException{
+		_main.showMainView();
 	}
 
 	public void setMainApp(Main main) {
