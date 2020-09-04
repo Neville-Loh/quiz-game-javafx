@@ -6,11 +6,14 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import jeopardy.view.CurrentWinningController;
+import jeopardy.view.MainController;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -28,7 +31,17 @@ public class Main extends Application {
 		
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Jepardy");
+//		FXMLLoader loader = new FXMLLoader();
+//		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
+//		_mainLayout = loader.load();
+//		Scene scene = new Scene(_mainLayout);
+//		_screenController = new ScreenController(scene);
+//		
+//		Pane p = FXMLLoader.load(Main.class.getResource( "calculator.fxml" ));
+//		_screenController.addScreen("calculator", FXMLLoader.load(Main.class.getResource( "view/MainView.fxml" )));
+//		_screenController.addScreen("testSwitch", FXMLLoader.load(getClass().getResource( "view/CurrentWinningView.fxml" )));
 		showMainView();
+		
 		
 
 	}
@@ -37,6 +50,9 @@ public class Main extends Application {
 		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
 		_mainLayout = loader.load();
 		Scene scene = new Scene(_mainLayout);
+		
+		MainController c = loader.getController();
+		c.setMainApp(this);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
@@ -66,16 +82,18 @@ public class Main extends Application {
 	}
 	
 	
-	public static void showCurrentWinningView() {
+	public void showCurrentWinningView() {
+		System.out.println("showCurrentWinning is being called");
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource("view/CurrentWinningView.fxml"));
 			BorderPane loadView = loader.load();
+//			CurrentWinningController c = loader.getController();
+//			c.setMainApp(this);
 			_mainLayout.setCenter(loadView);
 
 		} catch (IOException e) {
-			System.out.println("\n\n\n\n\n\n\n ");
-			e.printStackTrace();
+			throw new JeopardyRuntimeException(e.getMessage());
 		}
 	}
 	

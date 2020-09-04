@@ -10,32 +10,18 @@ import javafx.scene.layout.BorderPane;
 
 import jeopardy.Main;
 
-public class MainController {
+public class CurrentWinningController {
 	
 	private Main _main;
 	
 	@FXML
-	private void showCurrentWinningView(){
-		_main.showCurrentWinningView();
+	private void goMainMenu() throws IOException{
 	}
-//	
-//	@FXML
-//	private void showCurrentWinningView(){
-//		Main.showCurrentWinningView();
-//	}
-//	
-//	@FXML
-//	private void showCurrentWinningView(){
-//		Main.showCurrentWinningView();
-//	}
-//	
-//	@FXML
-//	private void 
-	
-	
+
 	public void setMainApp(Main main) {
 		_main = main;
 	}
-
-
+	
+	
+	
 }

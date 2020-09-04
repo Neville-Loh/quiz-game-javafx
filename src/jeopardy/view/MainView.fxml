@@ -22,7 +22,7 @@
             <Button mnemonicParsing="false" text="View avialble questoin" />
             <Button mnemonicParsing="false" text="Ask a question" />
             <Button mnemonicParsing="false" onAction="#showCurrentWinningView" text="view current winning" />
-            <Button mnemonicParsing="false" onAction="#showCurrentWinningView" text="reset game" />
+            <Button mnemonicParsing="false" text="reset game" />
             <Button mnemonicParsing="false" text="quit" />
          </children>
       </VBox>
