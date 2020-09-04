@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class QuizModel {
 	private int _winning;
-	private int _total_question_left;
+	private int _remainingQuestion;
 	private ArrayList<Category> _cats;
 	
 	private Question _activeQuestion;
@@ -12,7 +12,7 @@ public class QuizModel {
 	
 	public QuizModel() {
 		_winning = 1000;
-		_total_question_left = 20;
+		_remainingQuestion = 20;
 		_cats = getDummyCats();
 		
 		
@@ -41,6 +41,13 @@ public class QuizModel {
 		return _winning;
 	}
 	
+	/**
+	 * Get Method
+	 * @return total questoin left
+	 */
+	public int getRemainingQuestionCount(){
+		return _remainingQuestion;
+	}
 	
 	//---------------------------------------------------------------------------------------------------------
 	/**
@@ -51,6 +58,18 @@ public class QuizModel {
 		return _cats.get(0).get(1);
 	}
 	
+	public boolean answerQuestion(Question question, String input) {
+		if (question.getAnswer().equalsIgnoreCase(input)){
+			System.out.println("Correctly answer question");
+			_winning += question.getScore();
+			return true;
+		} else {
+			System.out.println("Not Correct answer for question");
+			_winning -= question.getScore();
+			return false;
+		}
+
+	}
 	/**
 	 * Create a dummy category for testing purposes.
 	 * @return
@@ -86,6 +105,11 @@ public class QuizModel {
 		dumbCat.add(cat1);
 		dumbCat.add(cat2);
 		return dumbCat;
+	}
+
+	public void reset() {
+		// TODO Auto-generated method stub
+		System.out.println("model rest is called");
 	}
 	
 

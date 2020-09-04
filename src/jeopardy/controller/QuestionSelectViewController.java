@@ -25,10 +25,8 @@ private QuizModel model;
 	
 	@FXML
 	private void goMainMenu(ActionEvent event) throws IOException{
-		ScreenController.goMainMenu(getClass(), event);
-		// get a qeutsion
-		Question question = model.gettestQuestion();
 		
+		Question question = model.gettestQuestion();
 		model.setActiveQuestion(question);
 		ScreenController.goQuestion(getClass(), event);
 	}

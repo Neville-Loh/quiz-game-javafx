@@ -6,22 +6,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jeopardy.controller.AnswerResultViewController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Your answer is " />
-            <Label text="UNKNOWERROR!" />
+            <Label fx:id="isCorrectLabel" text="UNKNOWERROR!" />
+            <Label fx:id="correctAnsLabel" />
             <Label text="Your Current Winning is" />
-            <Label text="UNKNOWERROR!" />
+            <Label fx:id="winningLabel" text="UNKNOWERROR!" />
          </children>
       </VBox>
    </center>
    <bottom>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Main Menu" />
+            <Button mnemonicParsing="false" onAction="#goMainMenu" text="Main Menu" />
+            <Button mnemonicParsing="false" onAction="#goQuestionSelect" text="Select Another Question" />
          </children>
       </HBox>
    </bottom>
