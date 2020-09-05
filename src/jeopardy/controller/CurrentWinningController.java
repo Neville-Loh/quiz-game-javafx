@@ -32,8 +32,6 @@ public class CurrentWinningController implements Initializable{
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
 		
-		model.textToSpeech("Current winning");
-		
 	}
 	
 	

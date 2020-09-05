@@ -34,10 +34,7 @@ public class QuestionSelectViewController implements Initializable{
 	
 	@FXML
 	private void goMainMenu(ActionEvent event) throws IOException{
-		
-		Question question = model.gettestQuestion();
-		model.setActiveQuestion(question);
-		ScreenController.goQuestion(getClass(), event);
+		ScreenController.goMainMenu(getClass(), event);
 	}
 
 	@Override
@@ -45,7 +42,6 @@ public class QuestionSelectViewController implements Initializable{
 
 		model = Main.getQuizModel();
 		ArrayList<Category> cats = model.getCategoryList();
-		
 		
 		for (Category cat : cats) {
 			

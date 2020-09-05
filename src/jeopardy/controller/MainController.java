@@ -37,6 +37,7 @@ public class MainController implements Initializable{
 	@FXML
 	private void resetButtonClick(ActionEvent event) throws IOException{
 		model.reset();
+		model.load();
 	}
 	/**
 	 * Testing purpose

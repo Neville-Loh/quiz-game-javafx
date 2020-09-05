@@ -1,7 +1,4 @@
 package jeopardy.model;
-
-import javafx.scene.control.DialogEvent;
-
 /**
  * Class for implementation of the question data structure, the class stores the
  * question prompt, the answer and score of the question.
@@ -19,7 +16,10 @@ public class Question {
 		_question = question;
 		_score = score;
 	}
-
+	
+	/**
+	 * return the question prompt as a string.
+	 */
 	@Override
 	public String toString() {
 		return _question;
@@ -28,7 +28,6 @@ public class Question {
 	
 	/**
 	 * Get Method, get the answer of the question
-	 * 
 	 * @return Answer
 	 */
 	public String getAnswer() {
@@ -37,7 +36,6 @@ public class Question {
 
 	/**
 	 * Get the score of the question
-	 * 
 	 * @return question Score
 	 */
 	public int getScore() {
@@ -46,7 +44,6 @@ public class Question {
 
 	/**
 	 * set attribute isAttempted to a boolean
-	 * 
 	 * @param bool
 	 */
 	public void setAttempted(boolean bool) {
@@ -56,7 +53,6 @@ public class Question {
 
 	/**
 	 * return true if the question has already been attempted, else false
-	 * 
 	 * @return isAttempted
 	 */
 	public boolean isAttempted() {

@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import jeopardy.controller.CurrentWinningController;
 import jeopardy.controller.MainController;
 import jeopardy.model.QuizModel;
+import jeopardy.util.FileHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -55,8 +56,6 @@ public class Main extends Application {
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
-		
 //		FXMLLoader loader = new FXMLLoader();
 //		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
 //		_mainLayout = loader.load();
