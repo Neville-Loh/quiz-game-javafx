@@ -32,6 +32,13 @@ public class QuizModel {
 	public Question getActiveQuestion() {
 		return _activeQuestion;
 	}
+	/**
+	 * Get Method
+	 * @return all Category
+	 */
+	public ArrayList<Category> getCategoryList(){
+		return _cats;
+	}
 	
 	/**
 	 * Get Method
@@ -43,7 +50,7 @@ public class QuizModel {
 	
 	/**
 	 * Get Method
-	 * @return total questoin left
+	 * @return total question left
 	 */
 	public int getRemainingQuestionCount(){
 		return _remainingQuestion;
@@ -59,6 +66,7 @@ public class QuizModel {
 	}
 	
 	public boolean answerQuestion(Question question, String input) {
+		question.setAttempted(true);
 		if (question.getAnswer().equalsIgnoreCase(input)){
 			System.out.println("Correctly answer question");
 			_winning += question.getScore();

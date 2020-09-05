@@ -45,6 +45,7 @@ public class Question {
 	 * @param bool
 	 */
 	public void setAttempted(boolean bool) {
+		System.out.println("Question " + _score + "'s isAttemp is setto" + bool);
 		_isAttempted = bool;
 	}
 	

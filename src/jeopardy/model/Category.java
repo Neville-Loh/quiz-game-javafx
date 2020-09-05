@@ -41,4 +41,9 @@ public class Category {
 	public Question get(int i) {
 		return _questions.get(i);
 	}
+	
+	
+	public ArrayList<Question> getQuestions(){
+		return _questions;
+	}
 }

@@ -11,7 +11,6 @@ import javafx.scene.control.Label;
 
 
 import jeopardy.Main;
-import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
 public class AnswerResultViewController implements Initializable{

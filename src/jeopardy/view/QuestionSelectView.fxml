@@ -11,7 +11,7 @@
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Select a question" />
-            <Label text="placeholder" />
+            <VBox fx:id="centerVBox" prefHeight="200.0" prefWidth="100.0" />
          </children>
       </VBox>
    </center>

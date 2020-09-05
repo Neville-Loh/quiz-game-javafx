@@ -19,10 +19,14 @@ public class ScreenController {
 	 * @param event of button
 	 * @throws IOException
 	 */
-	public static void goMainMenu(Class<?> controllerClass , ActionEvent event) throws IOException {
-		Parent parent = FXMLLoader.load(controllerClass.getResource("../view/MainView.fxml"));
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(new Scene(parent));
+	public static void goMainMenu(Class<?> controllerClass , ActionEvent event) {
+		try {
+			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/MainView.fxml"));
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(new Scene(parent));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -32,10 +36,14 @@ public class ScreenController {
 	 * @param event of button
 	 * @throws IOException
 	 */
-	public static void goQuestionSelect(Class<?> controllerClass , ActionEvent event) throws IOException {
-		Parent parent = FXMLLoader.load(controllerClass.getResource("../view/QuestionSelectView.fxml"));
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(new Scene(parent));
+	public static void goQuestionSelect(Class<?> controllerClass , ActionEvent event){
+		try {
+			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/QuestionSelectView.fxml"));
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(new Scene(parent));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -45,12 +53,16 @@ public class ScreenController {
 	 * @param event of button
 	 * @throws IOException
 	 */
-	public static void goQuestion(Class<?> controllerClass , ActionEvent event) throws IOException {
-		Parent parent = FXMLLoader.load(controllerClass.getResource("../view/QuestionView.fxml"));
-		Scene scene = new Scene(parent);
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+	public static void goQuestion(Class<?> controllerClass , ActionEvent event){
+		try {
+			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/QuestionView.fxml"));
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			window.setScene(new Scene(parent));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+	
 	
 	/**
 	 * Current Winning
