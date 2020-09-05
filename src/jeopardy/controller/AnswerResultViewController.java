@@ -33,9 +33,9 @@ public class AnswerResultViewController{
 	}
 	
 	public void invalidAnswerInit(Question question) {
-		isCorrectLabel.setText("Incorrect");
-		
 		model = Main.getQuizModel();
+		isCorrectLabel.setText("Incorrect");
+		model.textToSpeech("Incorrect");
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
 		correctAnsLabel.setText("The correct answer is " + question.getAnswer() + ".");

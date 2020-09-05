@@ -59,7 +59,7 @@ public class QuestionSelectViewController implements Initializable{
 				if (!question.isAttempted()) {
 					Button button = new Button(Integer.toString(question.getScore()));
 					
-					// set on Click function to go to quetsion page
+					// set on Click function to go to question page
 					button.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event){

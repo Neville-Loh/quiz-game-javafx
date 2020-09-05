@@ -2,6 +2,8 @@ package jeopardy.model;
 
 import java.util.ArrayList;
 
+import jeopardy.Utils;
+
 public class QuizModel {
 	private int _winning;
 	private int _remainingQuestion;
@@ -17,6 +19,40 @@ public class QuizModel {
 		
 		
 	}
+	
+	public void textToSpeech(String text) {
+		
+		System.out.println("Text to speach is called: " + text);
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				String command = "echo " + text + " | festival --tts";
+				Utils.runBash(command);
+			}
+
+		}).start();
+	}
+
+//	public void handle(DialogEvent event) {
+//		new Thread(new Runnable(){
+//
+//			@Override
+//			public void run() {
+//				try {
+//					Thread.sleep(200);;
+//				} catch(InterruptedException ex) {ex.printStackTrace();}
+//			}
+//			Platform.runLater(new Runnable(){
+//				@Override public void run() {
+//					if(alert.getDialogPane().getScene().getWindow().getWidth() < 100) {
+//						alert.getDialogPane().getScene().getWindow().setWidth(width);
+//						alert.getDialogPane().getScene().getWindow().setHeight(height);
+//					}
+//				}
+//			});
+//		});
+//	}
+
 	
 	/**
 	 * Set Method. set the active question
@@ -48,21 +84,12 @@ public class QuizModel {
 		return _winning;
 	}
 	
-	/**
+	/**S
 	 * Get Method
 	 * @return total question left
 	 */
 	public int getRemainingQuestionCount(){
 		return _remainingQuestion;
-	}
-	
-	//---------------------------------------------------------------------------------------------------------
-	/**
-	 * Get a dummy test question for testing purposes.
-	 * @return
-	 */
-	public Question gettestQuestion() {
-		return _cats.get(0).get(1);
 	}
 	
 	public boolean answerQuestion(Question question, String input) {
@@ -78,6 +105,16 @@ public class QuizModel {
 		}
 
 	}
+	
+	//---------------------------------------------------------------------------------------------------------
+	/**
+	 * Get a dummy test question for testing purposes.
+	 * @return
+	 */
+	public Question gettestQuestion() {
+		return _cats.get(0).get(1);
+	}
+	
 	/**-
 	 * Create a dummy category for testing purposes.
 	 * @return
