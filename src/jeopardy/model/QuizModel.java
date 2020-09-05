@@ -78,7 +78,7 @@ public class QuizModel {
 		}
 
 	}
-	/**
+	/**-
 	 * Create a dummy category for testing purposes.
 	 * @return
 	 */

@@ -17,7 +17,6 @@ public class ScreenController {
 	 * Utility Method to go to the main menu
 	 * @param controllerClass
 	 * @param event of button
-	 * @throws IOException
 	 */
 	public static void goMainMenu(Class<?> controllerClass , ActionEvent event) {
 		try {
@@ -34,7 +33,6 @@ public class ScreenController {
 	 * Utility Method to go to the Question Select View
 	 * @param controllerClass
 	 * @param event of button
-	 * @throws IOException
 	 */
 	public static void goQuestionSelect(Class<?> controllerClass , ActionEvent event){
 		try {
@@ -51,7 +49,6 @@ public class ScreenController {
 	 * Utility Method to go to the Question View
 	 * @param controllerClass
 	 * @param event of button
-	 * @throws IOException
 	 */
 	public static void goQuestion(Class<?> controllerClass , ActionEvent event){
 		try {
@@ -69,7 +66,6 @@ public class ScreenController {
 	 * Utility Method to go to the Current Winning View
 	 * @param controllerClass
 	 * @param event of button
-	 * @throws IOException
 	 */
 	public static void goCurrentWinning(Class<?> controllerClass , ActionEvent event) throws IOException {
 		Parent parent = FXMLLoader.load(controllerClass.getResource("../view/CurrentWinningView.fxml"));
@@ -82,7 +78,6 @@ public class ScreenController {
 	 * Utility Method to go to the GameOver View
 	 * @param controllerClass
 	 * @param event of button
-	 * @throws IOException
 	 */
 	public static void goGameOver(Class<?> controllerClass , ActionEvent event) throws IOException {
 		Parent parent = FXMLLoader.load(controllerClass.getResource("../view/GameOverView.fxml"));

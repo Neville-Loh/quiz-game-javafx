@@ -46,10 +46,13 @@ public class QuestionViewController implements Initializable{
 		Parent parent = loader.load();
 		Scene scene = new Scene(parent);
 		
+		AnswerResultViewController controller = loader.getController();
 	   if (isCorrect) {
 		   System.out.println("is correct");
+		   controller.validAnswerInit(question);
 	   } else {
 		   System.out.println("is not correct");
+		   controller.invalidAnswerInit(question);
 	   }
 	   Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 	   window.setScene(scene);

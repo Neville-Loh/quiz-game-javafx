@@ -63,7 +63,7 @@ public class QuestionSelectViewController implements Initializable{
 					button.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
 						public void handle(ActionEvent event){
-							model.setActiveQuestion(question);
+							model.setActiveQuestion(question);  //maybe change this
 							ScreenController.goQuestion(getClass(), event);
 						}
 					});

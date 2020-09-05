@@ -11,9 +11,10 @@ import javafx.scene.control.Label;
 
 
 import jeopardy.Main;
+import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
-public class AnswerResultViewController implements Initializable{
+public class AnswerResultViewController{
 	
 	private QuizModel model;
 	
@@ -30,13 +31,21 @@ public class AnswerResultViewController implements Initializable{
 	private void goQuestionSelect(ActionEvent event) throws IOException{
 		ScreenController.goQuestionSelect(getClass(), event);
 	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	
+	public void invalidAnswerInit(Question question) {
+		isCorrectLabel.setText("Incorrect");
+		
 		model = Main.getQuizModel();
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
-		
+		correctAnsLabel.setText("The correct answer is " + question.getAnswer() + ".");
+	}
+	
+	public void validAnswerInit(Question question) {
+		isCorrectLabel.setText("Correct");
+		model = Main.getQuizModel();
+		String scoreStr = Integer.toString(model.getWinning());
+		winningLabel.setText(scoreStr);
 	}
 	
 	
