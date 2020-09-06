@@ -2,7 +2,6 @@ package jeopardy.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,7 +10,6 @@ import javafx.scene.control.Label;
 
 
 import jeopardy.Main;
-import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
 public class CurrentWinningController implements Initializable{
@@ -21,11 +19,19 @@ public class CurrentWinningController implements Initializable{
 	@FXML private Label winningLabel;
 	
 	
+	/**
+	 * Navigate to the main menu
+	 * @param event
+	 */
 	@FXML
-	private void goMainMenu(ActionEvent event) throws IOException{
+	private void goMainMenu(ActionEvent event) {
 		ScreenController.goMainMenu(getClass(), event);
 	}
-
+	
+	/**
+	 * Initialize screen and populate model, and current winning of user.
+	 * @param event
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		model = Main.getQuizModel();

@@ -36,53 +36,15 @@ public class Main extends Application {
 		model = new QuizModel();
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Jepardy");
-//		FXMLLoader loader = new FXMLLoader();
-//		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
-//		_mainLayout = loader.load();
-//		Scene scene = new Scene(_mainLayout);
-//		_screenController = new ScreenController(scene);
-//		
-//		Pane p = FXMLLoader.load(Main.class.getResource( "calculator.fxml" ));
-//		_screenController.addScreen("calculator", FXMLLoader.load(Main.class.getResource( "view/MainView.fxml" )));
-//		_screenController.addScreen("testSwitch", FXMLLoader.load(getClass().getResource( "view/CurrentWinningView.fxml" )));
-		showMainView();
-		
-		
-
-	}
-	public void showMainView() throws IOException {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("view/MainView.fxml"));
 		Scene scene = new Scene(root);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-//		FXMLLoader loader = new FXMLLoader();
-//		loader.setLocation(Main.class.getResource("view/MainView.fxml"));
-//		_mainLayout = loader.load();
-//		Scene scene = new Scene(_mainLayout);
-//		
-////		MainController mainControler = loader.getController();
-////		mainControler.setMainApp(this);
-//		primaryStage.setScene(scene);
-//		primaryStage.show();
+		
+		
+
 	}
-	
-	
-//	
-//	private void showQuestoinSelectView() {
-//		try {
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(Main.class.getResource("view/MainView.fxml"));
-//			BorderPane loadView = loader.load();
-//			Scene scene = new Scene(loadView);
-//			primaryStage.setScene(scene);
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-	
 	
 	public static void main(String[] args) {
 		launch(args);

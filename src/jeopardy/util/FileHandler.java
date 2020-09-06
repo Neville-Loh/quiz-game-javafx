@@ -24,14 +24,17 @@ import jeopardy.model.Question;
  *
  */
 public class FileHandler {
-
+	
+	public static final String CATEGORY_FOLDER = "categories";
+	public static final String SAVE_FILENAME = "user.save";
+	
+	
 	/**
-	 * Load category in the
-	 * 
+	 * Load category in the system location
 	 * @param path of the folder.
 	 * @return Category List which contain all the questions
 	 */
-	public static ArrayList<Category> loadCategory(String path) {
+	public static ArrayList<Category> loadCategory() {
 
 		ArrayList<Category> result = new ArrayList<Category>();
 		int score;
@@ -39,8 +42,7 @@ public class FileHandler {
 		String answer;
 
 		try {
-			path = System.getProperty("user.dir") + File.separator +"categories";
-			System.out.println(path);
+			String path = System.getProperty("user.dir") + File.separator + CATEGORY_FOLDER;
 			File folder = new File(path);
 
 			// Looping though each category
@@ -72,32 +74,36 @@ public class FileHandler {
 
 		return result;
 	}
-
+	
+	/**
+	 * Save the database object as the save_file name at the system location.
+	 * @param db
+	 */
 	public static void saveDB(ObjectDB db) {
-		String FILENAME = "user.save";
 		// Save Object
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_FILENAME))) {
 			oos.writeObject(db);
-
 			System.out.println("DB has been saved");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-
+	
+	/**
+	 * Load the database object as the save_file name at the system location.
+	 * @param db
+	 */
 	public static ObjectDB loadDB() {
-		String FILENAME = "user.save";
 		ObjectDB db = null;
 		// Read Object
-		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_FILENAME))) {
 			db = (ObjectDB) ois.readObject();
 		} catch (Exception e) {
 			System.out.println("DB loading error");
 			e.printStackTrace();
 		}
 		return db;
-
 	}
 
 }

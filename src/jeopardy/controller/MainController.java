@@ -18,31 +18,36 @@ import javafx.scene.Scene;
 public class MainController implements Initializable{
 	private QuizModel model;
 	
+	/**
+	 * Navigate to question select screen
+	 * @param event
+	 */
 	@FXML
-	private void showQuestionSelectView(ActionEvent event) throws IOException{
+	private void showQuestionSelectView(ActionEvent event){
 		ScreenController.goQuestionSelect(getClass(), event);
 	}
 	
-	
+	/**
+	 * Navigate to question select screen
+	 * @param event
+	 */
 	@FXML
 	private void showCurrentWinningView(ActionEvent event) throws IOException{
 		ScreenController.goCurrentWinning(getClass(), event);
 	}
 	
 	/**
-	 * Testing purpose
+	 * Navigate to question select screen
 	 * @param event
-	 * @throws IOException
 	 */
 	@FXML
 	private void resetButtonClick(ActionEvent event) throws IOException{
 		model.reset();
-		model.load();
 	}
+	
 	/**
-	 * Testing purpose
+	 * Navigate to question select screen
 	 * @param event
-	 * @throws IOException
 	 */
 	@FXML
 	private void quitButtonClick(ActionEvent event) throws IOException{

@@ -8,17 +8,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import jeopardy.Main;
 import jeopardy.model.Category;
 import jeopardy.model.Question;
@@ -30,6 +26,7 @@ public class QuestionSelectViewController implements Initializable{
 
 	@FXML private Label quetsionLabel;
 	@FXML private VBox centerVBox;
+	@FXML private Label remainingQuestion;
 	
 	
 	@FXML
@@ -42,12 +39,16 @@ public class QuestionSelectViewController implements Initializable{
 
 		model = Main.getQuizModel();
 		ArrayList<Category> cats = model.getCategoryList();
+		remainingQuestion.setText(Integer.toString(model.getRemainingQuestionCount()));
+		
 		
 		for (Category cat : cats) {
 			
 			// Creates new rows
 			HBox row = new HBox();
+			row.setPadding(new Insets(10, 10, 10, 100));
 			Label title = new Label(cat.getTitle());
+			title.setPadding(new Insets(0,10,0,0));
 			row.getChildren().add(title);
 			
 			// creates new button for each not attempted question

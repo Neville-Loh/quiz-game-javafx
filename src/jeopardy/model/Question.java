@@ -17,6 +17,22 @@ public class Question {
 		_score = score;
 	}
 	
+
+	/**
+	 * set attribute isAttempted to a boolean
+	 * @param bool
+	 */
+	public void setAttempted(boolean bool) {
+		_isAttempted = bool;
+	}
+
+	/**
+	 * return true if the question has already been attempted, else false
+	 * @return isAttempted
+	 */
+	public boolean isAttempted() {
+		return _isAttempted;
+	}
 	/**
 	 * return the question prompt as a string.
 	 */
@@ -40,22 +56,5 @@ public class Question {
 	 */
 	public int getScore() {
 		return _score;
-	}
-
-	/**
-	 * set attribute isAttempted to a boolean
-	 * @param bool
-	 */
-	public void setAttempted(boolean bool) {
-		System.out.println("Question " + _score + "'s isAttemp is setto" + bool);
-		_isAttempted = bool;
-	}
-
-	/**
-	 * return true if the question has already been attempted, else false
-	 * @return isAttempted
-	 */
-	public boolean isAttempted() {
-		return _isAttempted;
 	}
 }
