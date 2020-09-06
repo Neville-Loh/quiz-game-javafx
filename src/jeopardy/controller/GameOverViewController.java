@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -13,8 +14,11 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Region;
 import jeopardy.Main;
 import jeopardy.model.QuizModel;
 
@@ -31,15 +35,25 @@ public class GameOverViewController implements Initializable {
 	
 	@FXML
 	private void resetButtonClick(ActionEvent event) {
-		model.reset();
+		Alert alert = new Alert(AlertType.CONFIRMATION,
+				"Are you sure you want to reset the game? Your save will be reset to its initial status. This can not be undone.",
+				ButtonType.YES, ButtonType.NO
+			);
+		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+		alert.setTitle("Rest Confirmation");
+		alert.setHeaderText(null);
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.YES) {
+			model.reset();
+		}
+		else {
+			event.consume();
+		}
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-		// #DEL
-		System.out.println("Changing to gameover scene");
-		// #LED
 		model = Main.getQuizModel();
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);

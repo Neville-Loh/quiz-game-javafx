@@ -8,9 +8,6 @@ import java.io.FileReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import jeopardy.db.ObjectDB;
 import jeopardy.model.Category;
@@ -43,6 +40,7 @@ public class FileHandler {
 
 		try {
 			String path = System.getProperty("user.dir") + File.separator + CATEGORY_FOLDER;
+			System.out.println(String.format("Laoding path %s", path));
 			File folder = new File(path);
 
 			// Looping though each category

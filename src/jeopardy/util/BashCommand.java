@@ -78,6 +78,7 @@ public class BashCommand {
 	public void kill() {
 		try {
 			if (pid != -1) {
+				System.out.println("killling command");
 				String killCommand = "kill " + pid;
 				ProcessBuilder killBuilder = new ProcessBuilder("bash", "-c", killCommand);
 				killBuilder.start();

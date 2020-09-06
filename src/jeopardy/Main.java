@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Modality;
@@ -18,7 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 
 /**
- * 
+ * Main class for the Jeopardy application. THe application is built with Javafx
+ * The application uses Model view controller architecture
  * @author Neville
  */
 
@@ -26,6 +28,41 @@ import javafx.scene.control.ButtonType;
 public class Main extends Application {
 	private Stage primaryStage;
 	private static  QuizModel model;
+	private EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
+        Alert closeConfirmation = new Alert(
+                Alert.AlertType.CONFIRMATION,
+                "Do you wish to exit without saving?",
+                ButtonType.YES, ButtonType.NO
+        );
+        
+        Button noButton = (Button) closeConfirmation.getDialogPane().lookupButton(
+                ButtonType.NO
+        );
+        noButton.setText("save and exit");
+        closeConfirmation.setHeaderText(null);
+        closeConfirmation.initModality(Modality.APPLICATION_MODAL);
+        closeConfirmation.initOwner(primaryStage);
+
+
+        Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
+        
+        // save and exit
+        if (ButtonType.NO.equals(closeResponse.get())) {
+        	model.save();
+        	Platform.exit();
+        	//System.exit(0);
+        }
+        
+        // exit without saving
+        if (ButtonType.YES.equals(closeResponse.get())) {
+        	Platform.exit();
+        	//System.exit(0);
+        } else {
+            event.consume();
+        }
+        
+    };
+   
 	
 	
 	@Override
@@ -43,35 +80,10 @@ public class Main extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
-		Stage stage = primaryStage;
-		EventHandler<WindowEvent> confirmCloseEventHandler = event -> {
-	        Alert closeConfirmation = new Alert(
-	                Alert.AlertType.CONFIRMATION,
-	                "Are you sure you want to exit?"
-	        );
-	        Button exitButton = (Button) closeConfirmation.getDialogPane().lookupButton(
-	                ButtonType.OK
-	        );
-	        exitButton.setText("Exit");
-	        closeConfirmation.setHeaderText("Confirm Exit");
-	        closeConfirmation.initModality(Modality.APPLICATION_MODAL);
-	        closeConfirmation.initOwner(stage);
-
-//	        // normally, you would just use the default alert positioning,
-//	        // but for this simple sample the main stage is small,
-//	        // so explicitly position the alert so that the main window can still be seen.
-//	        closeConfirmation.setX(stage.getX());
-//	        closeConfirmation.setY(stage.getY() + stage.getHeight());
-
-	        Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
-	        if (!ButtonType.OK.equals(closeResponse.get())) {
-	            event.consume();
-	        }
-	    };
-	    
-	    stage.setOnCloseRequest(confirmCloseEventHandler);
-		
+		primaryStage.setOnCloseRequest(confirmCloseEventHandler);
 	}
+	
+	
 	/**
 	 * @return the current quiz model of the game
 	 */

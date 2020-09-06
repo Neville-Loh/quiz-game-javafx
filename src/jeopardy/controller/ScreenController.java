@@ -22,7 +22,7 @@ public class ScreenController {
 	 */
 	public static void goMainMenu(Class<?> controllerClass, ActionEvent event) {
 		try {
-			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/MainView.fxml"));
+			Parent parent = FXMLLoader.load(controllerClass.getResource("/jeopardy/view/MainView.fxml"));
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			window.setScene(new Scene(parent));
 		} catch (IOException e) {
@@ -37,7 +37,7 @@ public class ScreenController {
 	 */
 	public static void goQuestionSelect(Class<?> controllerClass, ActionEvent event) {
 		try {
-			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/QuestionSelectView.fxml"));
+			Parent parent = FXMLLoader.load(controllerClass.getResource("/jeopardy/view/QuestionSelectView.fxml"));
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			window.setScene(new Scene(parent));
 		} catch (IOException e) {
@@ -52,7 +52,7 @@ public class ScreenController {
 	 */
 	public static void goQuestion(Class<?> controllerClass, ActionEvent event) {
 		try {
-			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/QuestionView.fxml"));
+			Parent parent = FXMLLoader.load(controllerClass.getResource("/jeopardy/view/QuestionView.fxml"));
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			window.setScene(new Scene(parent));
 		} catch (IOException e) {
@@ -67,9 +67,15 @@ public class ScreenController {
 	 */
 	public static void goCurrentWinning(Class<?> controllerClass, ActionEvent event) {
 		try {
-			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/CurrentWinningView.fxml"));
+			
+			System.out.println("This --  0 ");
+			Parent parent = FXMLLoader.load(controllerClass.getResource("/jeopardy/view/CurrentWinningView.fxml"));
+			System.out.println("This --  0 ");
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			System.out.println("This --  0 ");
 			window.setScene(new Scene(parent));
+			System.out.println("This --  0 ");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -82,7 +88,7 @@ public class ScreenController {
 	 */
 	public static void goGameOver(Class<?> controllerClass, ActionEvent event){
 		try {
-			Parent parent = FXMLLoader.load(controllerClass.getResource("../view/GameOverView.fxml"));
+			Parent parent = FXMLLoader.load(controllerClass.getResource("/jeopardy/view/GameOverView.fxml"));
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			window.setScene(new Scene(parent));
 		} catch (IOException e) {

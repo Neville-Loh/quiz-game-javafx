@@ -52,19 +52,16 @@ public class MainController implements Initializable{
 	 */
 	@FXML
 	private void resetButtonClick(ActionEvent event) throws IOException{
-		ButtonType yes = new ButtonType("yes", ButtonData.OK_DONE);
-		ButtonType no = new ButtonType("no", ButtonData.CANCEL_CLOSE);
-		Alert alert = new Alert(AlertType.CONFIRMATION
-				,"Are you sure you want to reset the game? Your save will be reset to its initial status. This can not be undone."
-				,ButtonType.YES, ButtonType.NO);
+		Alert alert = new Alert(AlertType.CONFIRMATION,
+				"Are you sure you want to reset the game? Your save will be reset to its initial status. This can not be undone.",
+				ButtonType.YES, ButtonType.NO
+			);
 		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 		alert.setTitle("Rest Confirmation");
 		alert.setHeaderText(null);
-		//alert.setContentText("Are you sure you want to reset the game? Your save will be reset to its initial status. This can not be undone.");
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.YES) {
 			model.reset();
-			//Platform.exit();
 		}
 		else {
 			event.consume();
@@ -78,7 +75,7 @@ public class MainController implements Initializable{
 	@FXML
 	private void quitButtonClick(ActionEvent event) throws IOException{
 		model.save();
-		ScreenController.goGameOver(getClass(), event);
+		Platform.exit();
 	}
 
 
