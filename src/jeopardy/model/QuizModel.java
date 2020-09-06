@@ -6,20 +6,32 @@ import java.util.Map;
 
 
 import jeopardy.Utils;
+import jeopardy.db.ObjectDB;
 import jeopardy.util.FileHandler;
-
+/**
+ * THe Quiz model of the application. This class contain all the necessary computation
+ * required by the quiz. The model is passed throughout all controller.
+ * @author Neville
+ */
 public class QuizModel {
 	private int _winning;
 	private int _remainingQuestion;
 	private ArrayList<Category> _cats;
 	private Question _activeQuestion;
 
+	/**
+	 * Constructor. The class initiate by loading all category. If there is also
+	 * a save file in the directory, the model will load it too. If save file 
+	 * does not exist, all value will be set to its initial status
+	 */
 	public QuizModel() {
 		_winning = 0;
 		_cats = FileHandler.loadCategory();
-		
-		
 		updateRemainingQuestion();
+		if (FileHandler.saveFileExist()) {
+			load();
+			System.out.print("load file suscessfuly load");
+		}
 	}
 	
 	/**
@@ -78,7 +90,8 @@ public class QuizModel {
 	}
 	
 	/**
-	 * 
+	 *  Load the current user data using the fileHandler named user.save at the system
+	 *  directory. The object mimic a database
 	 */
 	public void load() {
 		ObjectDB db = FileHandler.loadDB();
@@ -149,6 +162,10 @@ public class QuizModel {
 	 */
 	public ArrayList<Category> getCategoryList() {
 		return _cats;
+	}
+	//TODO remove
+	public void setRQ(int rq) {
+		_remainingQuestion = rq;
 	}
 	/**
 	 * Get Method

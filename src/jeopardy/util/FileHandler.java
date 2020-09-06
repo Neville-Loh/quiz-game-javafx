@@ -12,8 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jeopardy.db.ObjectDB;
 import jeopardy.model.Category;
-import jeopardy.model.ObjectDB;
 import jeopardy.model.Question;
 
 /**
@@ -104,6 +104,21 @@ public class FileHandler {
 			e.printStackTrace();
 		}
 		return db;
+	}
+	
+	/**
+	 * Return true if the file name exist, else return false,
+	 * The save_fileName;
+	 * @return if the save file exist;
+	 */
+	public static boolean saveFileExist() {
+		File f = new File(SAVE_FILENAME);
+		if(f.exists() && !f.isDirectory()) { 
+			System.out.println("Save file exist");
+			return true;
+		}
+		System.out.println("Save file dne");
+		return false;
 	}
 
 }

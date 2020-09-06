@@ -5,8 +5,10 @@ import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import jeopardy.Main;
@@ -14,10 +16,18 @@ import jeopardy.model.QuizModel;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Region;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonBar.ButtonData;
+/**
+ * 
+ * @author Neville
+ * 
+ */
 public class MainController implements Initializable{
 	private QuizModel model;
-	
 	/**
 	 * Navigate to question select screen
 	 * @param event
@@ -28,7 +38,7 @@ public class MainController implements Initializable{
 	}
 	
 	/**
-	 * Navigate to question select screen
+	 * Navigate to current winning screen
 	 * @param event
 	 */
 	@FXML
@@ -37,12 +47,28 @@ public class MainController implements Initializable{
 	}
 	
 	/**
-	 * Navigate to question select screen
+	 * Send out reset Alert, if user confirm, reset the game
 	 * @param event
 	 */
 	@FXML
 	private void resetButtonClick(ActionEvent event) throws IOException{
-		model.reset();
+		ButtonType yes = new ButtonType("yes", ButtonData.OK_DONE);
+		ButtonType no = new ButtonType("no", ButtonData.CANCEL_CLOSE);
+		Alert alert = new Alert(AlertType.CONFIRMATION
+				,"Are you sure you want to reset the game? Your save will be reset to its initial status. This can not be undone."
+				,ButtonType.YES, ButtonType.NO);
+		alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+		alert.setTitle("Rest Confirmation");
+		alert.setHeaderText(null);
+		//alert.setContentText("Are you sure you want to reset the game? Your save will be reset to its initial status. This can not be undone.");
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.YES) {
+			model.reset();
+			//Platform.exit();
+		}
+		else {
+			event.consume();
+		}
 	}
 	
 	/**
@@ -51,12 +77,8 @@ public class MainController implements Initializable{
 	 */
 	@FXML
 	private void quitButtonClick(ActionEvent event) throws IOException{
-		Parent parent = FXMLLoader.load(getClass().getResource("../view/GameOverView.fxml"));
-		Scene scene = new Scene(parent);
-		
-		// Gets the stage information 
-		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		window.setScene(scene);
+		model.save();
+		ScreenController.goGameOver(getClass(), event);
 	}
 
 

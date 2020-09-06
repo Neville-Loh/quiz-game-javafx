@@ -1,4 +1,4 @@
-package jeopardy.model;
+package jeopardy.db;
 
 import java.io.Serializable;
 import java.util.HashMap;

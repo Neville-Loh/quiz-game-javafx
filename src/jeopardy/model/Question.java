@@ -40,8 +40,6 @@ public class Question {
 	public String toString() {
 		return _question;
 	}
-	
-	
 	/**
 	 * Get Method, get the answer of the question
 	 * @return Answer

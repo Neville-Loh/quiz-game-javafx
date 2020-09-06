@@ -19,7 +19,7 @@
       </VBox>
    </center>
    <bottom>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="bottomHBox" alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" onAction="#goMainMenu" text="Main Menu" />
             <Button mnemonicParsing="false" onAction="#goQuestionSelect" text="Select Another Question" />

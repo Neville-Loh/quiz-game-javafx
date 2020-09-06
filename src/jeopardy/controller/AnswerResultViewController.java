@@ -2,9 +2,10 @@ package jeopardy.controller;
 import javafx.fxml.FXML;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-
+import javafx.scene.layout.HBox;
 import jeopardy.Main;
 import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
@@ -16,7 +17,7 @@ public class AnswerResultViewController{
 	@FXML private Label winningLabel;
 	@FXML private Label isCorrectLabel;
 	@FXML private Label correctAnsLabel;
-	
+	@FXML private HBox bottomHBox;
 	/**
 	 * Navigate to main menu
 	 * @param event
@@ -44,6 +45,7 @@ public class AnswerResultViewController{
 		model = Main.getQuizModel();
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
+		checkGameOverStatus();
 	}
 	
 	/**
@@ -57,6 +59,29 @@ public class AnswerResultViewController{
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
 		correctAnsLabel.setText("The correct answer is " + question.getAnswer() + ".");
+		checkGameOverStatus();
+		
+		
+	}
+	
+	/**
+	 * Check the number of remaining question, if 0 remains,
+	 * set bottom bar to a next button which brings user to the game over
+	 * screen.
+	 */
+	private void checkGameOverStatus() {
+		if (model.getRemainingQuestionCount() == 0) {
+			//System.out.println("Gamve over status prompt");
+			bottomHBox.getChildren().clear();
+			Button button = new Button("Next");
+			button.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event){
+					ScreenController.goGameOver(getClass(), event);
+				}
+			});
+			bottomHBox.getChildren().add(button);
+		}
 	}
 	
 	
