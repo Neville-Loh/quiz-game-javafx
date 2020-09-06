@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Class to represent the organization of the category, which catgoriy contain
- * multiple questions, for example 5 question per category
+ * multiple questions, for example 5 question per category.
  * 
  * @author Neville
  */
@@ -42,8 +42,18 @@ public class Category {
 		return _questions.get(i);
 	}
 	
-	
+	/**
+	 * Get Method
+	 * @return array list containing all quesiton in the category
+	 */
 	public ArrayList<Question> getQuestions(){
 		return _questions;
+	}
+	/**
+	 * Get Method
+	 * @return return the total number of question in the category
+	 */
+	public int getQuestionCount() {
+		return _questions.size();
 	}
 }

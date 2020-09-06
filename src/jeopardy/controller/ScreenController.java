@@ -67,14 +67,9 @@ public class ScreenController {
 	 */
 	public static void goCurrentWinning(Class<?> controllerClass, ActionEvent event) {
 		try {
-			
-			System.out.println("This --  0 ");
 			Parent parent = FXMLLoader.load(controllerClass.getResource("/jeopardy/view/CurrentWinningView.fxml"));
-			System.out.println("This --  0 ");
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-			System.out.println("This --  0 ");
 			window.setScene(new Scene(parent));
-			System.out.println("This --  0 ");
 			
 		} catch (IOException e) {
 			e.printStackTrace();

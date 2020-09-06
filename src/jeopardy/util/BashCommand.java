@@ -39,7 +39,7 @@ public class BashCommand {
 				Field pidField = process.getClass().getDeclaredField("pid");
 				pidField.setAccessible(true);
 				pid = pidField.getInt(process);
-
+				System.out.println(pid);
 				String killCommand = "kill -STOP " + pid;
 				ProcessBuilder killBuilder = new ProcessBuilder("bash", "-c", killCommand);
 				killBuilder.start();
@@ -77,6 +77,7 @@ public class BashCommand {
 	 */
 	public void kill() {
 		try {
+			System.out.println("killling command");
 			if (pid != -1) {
 				System.out.println("killling command");
 				String killCommand = "kill " + pid;

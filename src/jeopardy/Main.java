@@ -50,6 +50,7 @@ public class Main extends Application {
         if (ButtonType.NO.equals(closeResponse.get())) {
         	model.save();
         	Platform.exit();
+        	//System.out.println();
         	//System.exit(0);
         }
         

@@ -27,17 +27,18 @@ import jeopardy.model.Category;
 import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
-public class QuestionSelectViewController implements Initializable{
+public class QuestionSelectViewController implements Initializable {
 	private QuizModel model;
 
-
-	@FXML private Label quetsionLabel;
-	@FXML private Label remainingQuestion;
-	@FXML private GridPane centerGridPane;
-	
-	
 	@FXML
-	private void goMainMenu(ActionEvent event) throws IOException{
+	private Label quetsionLabel;
+	@FXML
+	private Label remainingQuestion;
+	@FXML
+	private GridPane centerGridPane;
+
+	@FXML
+	private void goMainMenu(ActionEvent event) throws IOException {
 		ScreenController.goMainMenu(getClass(), event);
 	}
 
@@ -47,73 +48,43 @@ public class QuestionSelectViewController implements Initializable{
 		model = Main.getQuizModel();
 		ArrayList<Category> cats = model.getCategoryList();
 		remainingQuestion.setText(Integer.toString(model.getRemainingQuestionCount()));
+
+		//centerGridPane.setGridLinesVisible(true);
 		
-		
-//		for (Category cat : cats) {
-//			
-//			// Creates new rows
-//			HBox row = new HBox();
-//			row.setPadding(new Insets(10, 10, 10, 100));
-//			Label title = new Label(cat.getTitle());
-//			title.setPadding(new Insets(0,10,0,0));
-//			row.getChildren().add(title);
-//			
-//			// creates new button for each not attempted question
-//			for (Question question : cat.getQuestions()) {
-//				if (!question.isAttempted()) {
-//					Button button = new Button(Integer.toString(question.getScore()));
-//					
-//					// set on Click function to go to question page
-//					button.setOnAction(new EventHandler<ActionEvent>() {
-//						@Override
-//						public void handle(ActionEvent event){
-//							model.setActiveQuestion(question);  //TODO maybe change this
-//							ScreenController.goQuestion(getClass(), event);
-//						}
-//					});
-//					row.getChildren().add(button);
-//				}
-//			}
-//			centerVBox.getChildren().add(row);
-//		}
-//		
-//    	for (int i=0; i<_categories.size();i++) {
-//    		centerGridPane.getColumnConstraints().add(new ColumnConstraints(-1, -1, -1, Priority.ALWAYS, HPos.CENTER, false));
-//    	}
-//    	for (int i=0; i < 5-1;i++) {
-//    		centerGridPane.getRowConstraints().add(new RowConstraints(-1, -1, -1, Priority.ALWAYS, VPos.CENTER, false));
-//    	}
-    	
-    	
-    	centerGridPane.setGridLinesVisible(true);
-    	
-    	int col=0;
-    	int i=1;
-    	
-    	for (Category category : cats) {
-    		i=1;
-    		centerGridPane.getColumnConstraints().add(new ColumnConstraints(-1, -1, -1, Priority.ALWAYS, HPos.CENTER, false));
-    		
-    		Label label = new Label(category.getTitle());
-    		centerGridPane.add(label, col, 0);
-    		for (Question question : category.getQuestions()) {
-    			
-    			//centerGridPane.getRowConstraints().add(new RowConstraints(-1, -1, -1, Priority.ALWAYS, VPos.CENTER, false));
-    			if (!question.isAttempted()) {
-    				Button button = new Button(Integer.toString(question.getScore()));
-    				centerGridPane.add(button, col, i);
-	    			button.setOnAction(new EventHandler<ActionEvent>() {
-	    				@Override
-	    				public void handle(ActionEvent event) {
-	    					model.setActiveQuestion(question);
+		if (cats.get(0) != null) {
+			for (int i = 0; i <= cats.get(0).getQuestionCount(); i++) {
+				centerGridPane.getRowConstraints()
+						.add(new RowConstraints(50, 30, -1, Priority.ALWAYS, VPos.CENTER, false));
+			}
+		}
+
+		int col = 0;
+		int i = 1;
+
+		for (Category category : cats) {
+			i = 1;
+			centerGridPane.getColumnConstraints()
+					.add(new ColumnConstraints(-1, -1, -1, Priority.ALWAYS, HPos.CENTER, false));
+
+			Label label = new Label(category.getTitle());
+			centerGridPane.add(label, col, 0);
+			for (Question question : category.getQuestions()) {
+
+				if (!question.isAttempted()) {
+					Button button = new Button(Integer.toString(question.getScore()));
+					centerGridPane.add(button, col, i);
+					button.setOnAction(new EventHandler<ActionEvent>() {
+						@Override
+						public void handle(ActionEvent event) {
+							model.setActiveQuestion(question);
 							ScreenController.goQuestion(getClass(), event);
-	    				}
-	    			});
-    			}
-    			i++;
-    		}
-    		col++;
-    	}
+						}
+					});
+				}
+				i++;
+			}
+			col++;
+		}
 
 	}
 }
