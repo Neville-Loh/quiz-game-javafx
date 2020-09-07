@@ -49,8 +49,8 @@ Project Structure
 
 
 
-## futrue imporvement
+## futrue improvement
 - Refactor into mvc package structure with .resources
-- Replace sudo database with SQL or SQLite
+- Replace pseudo database with SQL or SQLite
 - Better exception handling to cooperate changes of question set during runtime
 - Better notification system
