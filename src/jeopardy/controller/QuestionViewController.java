@@ -66,7 +66,6 @@ public class QuestionViewController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("Quesiton view init");
 		model = Main.getQuizModel();
 		question = model.getActiveQuestion();
 		model.textToSpeech(question.toString());

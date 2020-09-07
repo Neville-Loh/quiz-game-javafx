@@ -7,9 +7,12 @@ import java.util.Map;
 import jeopardy.db.ObjectDB;
 import jeopardy.util.FileHandler;
 import jeopardy.util.Helper;
+
 /**
- * THe Quiz model of the application. This class contain all the necessary computation
- * required by the quiz. The model is passed throughout all controller.
+ * THe Quiz model of the application. This class contain all the necessary
+ * computation required by the quiz. The model is passed throughout all
+ * controller.
+ * 
  * @author Neville
  */
 public class QuizModel {
@@ -19,24 +22,29 @@ public class QuizModel {
 	private Question _activeQuestion;
 
 	/**
-	 * Constructor. The class initiate by loading all category. If there is also
-	 * a save file in the directory, the model will load it too. If save file 
-	 * does not exist, all value will be set to its initial status
+	 * Constructor. The class initiate by loading all category. If there is also a
+	 * save file in the directory, the model will load it too. If save file does not
+	 * exist, all value will be set to its initial status
 	 */
 	public QuizModel() {
 		_winning = 0;
 		_cats = FileHandler.loadCategory();
 		updateRemainingQuestion();
-		if (FileHandler.saveFileExist()) {
-			load();
-			System.out.print("load file suscessfuly load");
+		try {
+			if (FileHandler.saveFileExist()) {
+				load();
+				System.out.println("load file suscessfuly load");
+			}
+		} catch (Exception e) {
+			System.out.println("Loading failed. Maybe trying removing user.save in the working directory");
+			e.printStackTrace();
 		}
 	}
-	
+
 	/**
-	 * Perform game feature of answering question, the method checks if the 
-	 * answer is correct, update the score of the user, and return a boolean
-	 * according to if the answer is correct or not.
+	 * Perform game feature of answering question, the method checks if the answer
+	 * is correct, update the score of the user, and return a boolean according to
+	 * if the answer is correct or not.
 	 * 
 	 * @param question
 	 * @param User input
@@ -46,11 +54,9 @@ public class QuizModel {
 		question.setAttempted(true);
 		_remainingQuestion -= 1;
 		if (question.getAnswer().equalsIgnoreCase(input)) {
-			System.out.println("Correctly answer question");
 			_winning += question.getScore();
 			return true;
 		} else {
-			System.out.println("Not Correct answer for question");
 			_winning -= question.getScore();
 			return false;
 		}
@@ -58,8 +64,8 @@ public class QuizModel {
 	}
 
 	/**
-	 * Count and update the question remaining, the function loop though
-	 * all questions in the category and count the attempted function.
+	 * Count and update the question remaining, the function loop though all
+	 * questions in the category and count the attempted function.
 	 */
 	public void updateRemainingQuestion() {
 		_remainingQuestion = 0;
@@ -71,6 +77,7 @@ public class QuizModel {
 			}
 		}
 	}
+
 	/**
 	 * Save the current user data to a file named user.save at The system directory
 	 * The file is saved as an object which mimic a database
@@ -87,17 +94,17 @@ public class QuizModel {
 		db.setIsAttemptedMap(isAttemptedMap);
 		FileHandler.saveDB(db);
 	}
-	
+
 	/**
-	 *  Load the current user data using the fileHandler named user.save at the system
-	 *  directory. The object mimic a database
+	 * Load the current user data using the fileHandler named user.save at the
+	 * system directory. The object mimic a database
 	 */
 	public void load() {
 		ObjectDB db = FileHandler.loadDB();
 		_winning = db.getWinning();
 		Map<String, Boolean> isAttemptedMap = db.getIsAttemptedMap();
-		
-		//TODO handle exception
+
+		// TODO handle exception
 		for (Category cat : _cats) {
 			for (Question question : cat.getQuestions()) {
 				if (isAttemptedMap.get(question.toString()) == true) {
@@ -108,10 +115,10 @@ public class QuizModel {
 		}
 		updateRemainingQuestion();
 	}
-	
+
 	/**
-	 * Rest the game of the session, the user score is reset to 0
-	 * and all attempted question will be set to its non attempted status
+	 * Rest the game of the session, the user score is reset to 0 and all attempted
+	 * question will be set to its non attempted status
 	 */
 	public void reset() {
 		_winning = 0;
@@ -124,13 +131,11 @@ public class QuizModel {
 		}
 	}
 
-	
 	/**
 	 * TextToSpeech function using festival bash command.
 	 * @param text to be turned into speach
 	 */
 	public void textToSpeech(String text) {
-		System.out.println("Text to speach is called: " + text);
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -162,10 +167,6 @@ public class QuizModel {
 	public ArrayList<Category> getCategoryList() {
 		return _cats;
 	}
-	//TODO remove
-	public void setRQ(int rq) {
-		_remainingQuestion = rq;
-	}
 	/**
 	 * Get Method
 	 * @return score of the player
@@ -173,6 +174,14 @@ public class QuizModel {
 	public int getWinning() {
 		return _winning;
 	}
+	/**
+	 * Get Method
+	 * @return Score as a string with dollar sign 
+	 */
+	public String getWinningStr() {
+		return "$" + Integer.toString(_winning);
+	}
+
 	/**
 	 * Get Method
 	 * @return total question left

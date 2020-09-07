@@ -39,7 +39,7 @@ public class CurrentWinningController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		model = Main.getQuizModel();
-		String scoreStr = Integer.toString(model.getWinning());
+		String scoreStr = model.getWinningStr();
 		winningLabel.setText(scoreStr);
 		
 	}

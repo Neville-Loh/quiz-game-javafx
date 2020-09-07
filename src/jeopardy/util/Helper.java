@@ -19,14 +19,15 @@ import jeopardy.Main;
 import jeopardy.model.QuizModel;
 
 /**
- * Helper class for application jeopardy
- * @author se2062020
+ * Helper class for application Jeopardy, contain all helper function 
+ * of the application
+ * @author Neville
  *
  */
 public class Helper {
 	
 	/**
-	 * 
+	 * Run a bash command using process builder
 	 * @param command
 	 */
 	public static void runBash(String command) {
@@ -53,11 +54,43 @@ public class Helper {
 		}
 	}
 
-	
+	 /**
+     * Lambda implementation of confirmClose event handler for prompting the user
+     * to confirm exit without saving
+     */
+    public static EventHandler<WindowEvent> confirmCloseEventHandler = (event) -> {
+        Alert closeConfirmation = new Alert(
+                Alert.AlertType.CONFIRMATION,
+                "Do you wish to exit without saving?",
+                ButtonType.YES, ButtonType.NO
+        );
+        
+        Button noButton = (Button) closeConfirmation.getDialogPane().lookupButton(
+                ButtonType.NO
+        );
+        noButton.setText("save and exit");
+        closeConfirmation.setHeaderText(null);
+        closeConfirmation.initModality(Modality.APPLICATION_MODAL);
+        Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
+        
+        // save and exit
+        if (ButtonType.NO.equals(closeResponse.get())) {
+        	QuizModel model = Main.getQuizModel();
+        	model.save();
+        	Platform.exit();
+        }
+        // exit without saving
+        if (ButtonType.YES.equals(closeResponse.get())) {
+        	Platform.exit();
+        } else {
+            event.consume();
+        }
+    };
+    
 	/**
-	 * 
+	 * Create a pop up javafx element for notification
 	 * @param message
-	 * @return
+	 * @return pop up element
 	 */
     public static Popup createPopup(final String message) {
         final Popup popup = new Popup();
@@ -78,7 +111,8 @@ public class Helper {
     }
     
     /**
-     * 
+     * Show a pop up message on the top left cornner at a given stage
+     * in javaFX stages.
      * @param message
      * @param stage
      */
@@ -94,39 +128,4 @@ public class Helper {
         popup.show(stage);
     }
     
-    /**
-     * Lambda implementation of confirmClose event handler for prompting the user
-     * to save or 
-     */
-    public static EventHandler<WindowEvent> confirmCloseEventHandler = (event) -> {
-        Alert closeConfirmation = new Alert(
-                Alert.AlertType.CONFIRMATION,
-                "Do you wish to exit without saving?",
-                ButtonType.YES, ButtonType.NO
-        );
-        
-        Button noButton = (Button) closeConfirmation.getDialogPane().lookupButton(
-                ButtonType.NO
-        );
-        noButton.setText("save and exit");
-        closeConfirmation.setHeaderText(null);
-        closeConfirmation.initModality(Modality.APPLICATION_MODAL);
-        //closeConfirmation.initOwner(primaryStage);
-        Optional<ButtonType> closeResponse = closeConfirmation.showAndWait();
-        
-        // save and exit
-        if (ButtonType.NO.equals(closeResponse.get())) {
-        	QuizModel model = Main.getQuizModel();
-        	model.save();
-        	Platform.exit();
-        }
-        
-        // exit without saving
-        if (ButtonType.YES.equals(closeResponse.get())) {
-        	Platform.exit();
-        } else {
-            event.consume();
-        }
-        
-    };
 }

@@ -50,7 +50,7 @@ public class AnswerResultViewController{
 		isCorrectLabel.setText("Correct");
 		model.textToSpeech("Correct");
 		
-		String scoreStr = Integer.toString(model.getWinning());
+		String scoreStr = model.getWinningStr();
 		winningLabel.setText(scoreStr);
 		checkGameOverStatus();
 	}
@@ -63,12 +63,12 @@ public class AnswerResultViewController{
 		model = Main.getQuizModel();
 		isCorrectLabel.setText("Incorrect");
 		
-		String scoreStr = Integer.toString(model.getWinning());
+		String scoreStr = model.getWinningStr();
 		winningLabel.setText(scoreStr);
 		
 		String correctAnsStr = "The correct answer is " + question.getAnswer() + ".";
 		correctAnsLabel.setText(correctAnsStr);
-		model.textToSpeech("Incorrect" + correctAnsStr);
+		model.textToSpeech("Incorrect. " + correctAnsStr);
 		checkGameOverStatus();
 	}
 	

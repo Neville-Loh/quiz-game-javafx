@@ -21,7 +21,9 @@ public class Main extends Application {
 	private Stage primaryStage;
 	private static  QuizModel model;
    
-
+	/**
+	 * Start the current application by showing primary stage
+	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		// to ensure singleton assignment
@@ -41,6 +43,7 @@ public class Main extends Application {
 	
 	
 	/**
+	 * Static method to pass model to controller
 	 * @return the current quiz model of the game
 	 */
 	public static QuizModel getQuizModel() {

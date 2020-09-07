@@ -68,7 +68,7 @@ public class GameOverViewController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 		model = Main.getQuizModel();
-		String scoreStr = Integer.toString(model.getWinning());
+		String scoreStr = model.getWinningStr();
 		winningLabel.setText(scoreStr);
 		} catch (Exception e) {
 			e.printStackTrace();
