@@ -78,10 +78,12 @@ public class Helper {
         	QuizModel model = Main.getQuizModel();
         	model.save();
         	Platform.exit();
+        	System.exit(0);
         }
         // exit without saving
         if (ButtonType.YES.equals(closeResponse.get())) {
         	Platform.exit();
+        	System.exit(0);
         } else {
             event.consume();
         }
