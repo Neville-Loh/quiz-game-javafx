@@ -12,12 +12,16 @@ import javafx.scene.control.Label;
 import jeopardy.Main;
 import jeopardy.model.QuizModel;
 
+/**
+ * Controller class for current winning view at CurrentWinningView.fxml.
+ * Display the current winning of the user
+ * @author Neville
+ */
 public class CurrentWinningController implements Initializable{
 	
 	private QuizModel model;
 	
 	@FXML private Label winningLabel;
-	
 	
 	/**
 	 * Navigate to the main menu

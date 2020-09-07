@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;
 import jeopardy.Main;
 import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
-import jeopardy.util.TextToSpeech;
 /**
  * Controller class for question view at QuestionView.fxml.
  * Display are question and text field
@@ -29,8 +28,7 @@ public class QuestionViewController implements Initializable {
 
 	private QuizModel model;
 	private Question question;
-	private TextToSpeech sentence;
-
+	
 	@FXML private Label questionLabel;
 	@FXML private TextField textfield;
 	
@@ -71,9 +69,7 @@ public class QuestionViewController implements Initializable {
 		System.out.println("Quesiton view init");
 		model = Main.getQuizModel();
 		question = model.getActiveQuestion();
-		sentence = new TextToSpeech(question.toString());
-		sentence.speak();
-		//model.textToSpeech(question.toString());
+		model.textToSpeech(question.toString());
 		questionLabel.setText(question.toString());
 
 	}
@@ -101,8 +97,6 @@ public class QuestionViewController implements Initializable {
 			} else {
 				controller.invalidAnswerInit(question);
 			}
-			// stops the text to speech
-			sentence.stop();
 			
 			// switch to next screen
 			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -3,7 +3,7 @@ package jeopardy.model;
 import java.util.ArrayList;
 
 /**
- * Class to represent the organization of the category, which catgoriy contain
+ * Class to represent the organization of the category, which category contains
  * multiple questions, for example 5 question per category.
  * 
  * @author Neville
@@ -19,7 +19,7 @@ public class Category {
 	
 	/**
 	 * Add a question to a category 
-	 * @param q
+	 * @param question
 	 */
 	public void add(Question q) {
 	_questions.add(q);

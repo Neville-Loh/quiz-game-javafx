@@ -1,7 +1,6 @@
 package jeopardy.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.io.IOException;
@@ -10,10 +9,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
@@ -22,17 +17,31 @@ import javafx.scene.layout.Region;
 import jeopardy.Main;
 import jeopardy.model.QuizModel;
 
+/**
+ * Controller class for question view at QuestionView.fxml.
+ * Display are question and text field
+ * @author Neville
+ */
 public class GameOverViewController implements Initializable {
 
 	private QuizModel model;
 
 	@FXML private Label winningLabel;
 	
+	/**
+	 * Navigate to main menu
+	 * @param event
+	 */
 	@FXML
 	private void goMainMenu(ActionEvent event) throws IOException {
 		ScreenController.goMainMenu(getClass(), event);
 	}
 	
+	/**
+	 * Raise alert for rest option, if user proceed if yes, reset the model
+	 * to its initial state.
+	 * @param event
+	 */
 	@FXML
 	private void resetButtonClick(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION,
@@ -50,7 +59,11 @@ public class GameOverViewController implements Initializable {
 			event.consume();
 		}
 	}
-
+	
+	/**
+	 * Initialize the current scene
+	 * populate label of current winning.
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {

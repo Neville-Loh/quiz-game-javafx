@@ -47,7 +47,6 @@ public class Question {
 	public String getAnswer() {
 		return _answer;
 	}
-
 	/**
 	 * Get the score of the question
 	 * @return question Score

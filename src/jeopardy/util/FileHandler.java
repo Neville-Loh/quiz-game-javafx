@@ -15,7 +15,7 @@ import jeopardy.model.Question;
 
 /**
  * Utility class which handle all the loading and saving, writing logs file in
- * the jeopardy application.
+ * the Jeopardy application.
  * 
  * @author Neville
  *

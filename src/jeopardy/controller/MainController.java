@@ -1,6 +1,5 @@
 package jeopardy.controller;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import java.io.IOException;
@@ -10,24 +9,21 @@ import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.stage.Stage;
 import jeopardy.Main;
 import jeopardy.model.QuizModel;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
 /**
- * 
+ * Controller class for main menu view at MainView.fxml.
+ * class control each button in the main menu
  * @author Neville
  * 
  */
 public class MainController implements Initializable{
 	private QuizModel model;
+	
 	/**
 	 * Navigate to question select screen
 	 * @param event
@@ -69,7 +65,7 @@ public class MainController implements Initializable{
 	}
 	
 	/**
-	 * Navigate to question select screen
+	 * Save and exit the application
 	 * @param event
 	 */
 	@FXML
@@ -78,7 +74,9 @@ public class MainController implements Initializable{
 		Platform.exit();
 	}
 
-
+	/**
+	 * Populate the quiz model
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		model = Main.getQuizModel();

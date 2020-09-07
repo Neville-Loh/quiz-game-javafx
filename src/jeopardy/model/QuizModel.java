@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-
-import jeopardy.Utils;
 import jeopardy.db.ObjectDB;
 import jeopardy.util.FileHandler;
+import jeopardy.util.Helper;
 /**
  * THe Quiz model of the application. This class contain all the necessary computation
  * required by the quiz. The model is passed throughout all controller.
@@ -136,7 +135,7 @@ public class QuizModel {
 			@Override
 			public void run() {
 				String command = "echo \"" + text + "\" | festival --tts";
-				Utils.runBash(command);
+				Helper.runBash(command);
 			}
 
 		}).start();

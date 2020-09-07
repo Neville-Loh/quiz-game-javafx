@@ -10,6 +10,11 @@ import jeopardy.Main;
 import jeopardy.model.Question;
 import jeopardy.model.QuizModel;
 
+/**
+ * Controller class for answer view after a question
+ * Display the solution to user if incorrect
+ * @author Neville
+ */
 public class AnswerResultViewController{
 	
 	private QuizModel model;
@@ -41,8 +46,10 @@ public class AnswerResultViewController{
 	 * @param question
 	 */
 	public void validAnswerInit(Question question) {
-		isCorrectLabel.setText("Correct");
 		model = Main.getQuizModel();
+		isCorrectLabel.setText("Correct");
+		model.textToSpeech("Correct");
+		
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
 		checkGameOverStatus();
@@ -55,13 +62,14 @@ public class AnswerResultViewController{
 	public void invalidAnswerInit(Question question) {
 		model = Main.getQuizModel();
 		isCorrectLabel.setText("Incorrect");
-		model.textToSpeech("Incorrect");
+		
 		String scoreStr = Integer.toString(model.getWinning());
 		winningLabel.setText(scoreStr);
-		correctAnsLabel.setText("The correct answer is " + question.getAnswer() + ".");
+		
+		String correctAnsStr = "The correct answer is " + question.getAnswer() + ".";
+		correctAnsLabel.setText(correctAnsStr);
+		model.textToSpeech("Incorrect" + correctAnsStr);
 		checkGameOverStatus();
-		
-		
 	}
 	
 	/**
@@ -71,7 +79,6 @@ public class AnswerResultViewController{
 	 */
 	private void checkGameOverStatus() {
 		if (model.getRemainingQuestionCount() == 0) {
-			//System.out.println("Gamve over status prompt");
 			bottomHBox.getChildren().clear();
 			Button button = new Button("Next");
 			button.setOnAction(new EventHandler<ActionEvent>() {
