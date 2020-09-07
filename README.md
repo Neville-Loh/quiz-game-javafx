@@ -3,6 +3,7 @@
 Jeopardy is a quiz application built with javaFx11. This is a assignment project developed to help practices
 the javaFx library. The application was built for Linux Environment
 
+![](./img/main.png)
 
 The following project uses:
 - festival, (Text to speech module using Bash command)
@@ -35,7 +36,6 @@ Note that the program assume neither the question or the solution contains comma
 score, question prompt, solution
 ```
 
-
 Project Structure
 
 > **A:** The project is build with mvc design in mind
@@ -47,6 +47,8 @@ Project Structure
     │   └── css  
     └── util
 
+### Screen Shorts
+![](./img/combine.png)
 
 
 ## futrue improvement
