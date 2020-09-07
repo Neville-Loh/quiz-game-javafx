@@ -11,12 +11,18 @@ The following project uses:
 
 ## Getting Started
 To run the following 
+### Method 1
 rename ```path``` to the absolute path to javaFx Libaray
 ```
 java --module-path /path/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.media,javafx.base,javafx.fxml -jar jeopardy.jar
 ```
+### Method 2 
+modify path in run.sh to the absolute path to javaFx Libaray mentioned above
+```
+bash
+> ./run.sh
+```
 The .jar file assumes there exist a file name ```categories``` within the same directory.
-
 
 ## Adding Questions to the Applications
 The folder ```categories``` contains question to the quiz. Each text file represent one category 
@@ -42,6 +48,10 @@ Project Strutrue
 
 
 
-## Used Scripts
+## futrue imporvement
+- Refacdtor into mvc package structure with .resouces
+- Replase sudo database with SQL or SQLite
+- Better exception handleing to incooperation chagee of question set during runtime
+- Better notification system
 
 
