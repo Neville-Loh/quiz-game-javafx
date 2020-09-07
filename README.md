@@ -1,7 +1,7 @@
 # Jeopardy
 
 Jeopardy is a quiz application built with javaFx11. This is a assignment project developed to help practicse
-the javaFx library.
+the javaFx library. The application was built for Linux Enviroment
 
 
 The following project uses:
@@ -33,13 +33,13 @@ Project Strutrue
 
 > **A:** The project is build with mvc design in mind
 
- jeopardy
-    ├── controller
-    ├── model
-    ├── view
-    │   └── css
-    ├── util
-    └── main.java
+ jeopardy  
+    ├── controller  
+    ├── model   
+    ├── view  
+    │   └── css  
+    └── ultil
+
 
 
 ## Used Scripts
