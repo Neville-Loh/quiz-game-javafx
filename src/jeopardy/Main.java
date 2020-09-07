@@ -1,26 +1,14 @@
 package jeopardy;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Optional;
 
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import jeopardy.model.QuizModel;
 import jeopardy.util.Helper;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 
 /**
  * Main class for the Jeopardy application. THe application is built with Javafx

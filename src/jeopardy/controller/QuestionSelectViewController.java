@@ -83,7 +83,7 @@ public class QuestionSelectViewController implements Initializable {
 				// Display the button if the question is not attempt
 				if (!question.isAttempted()) {
 					Button button = new Button(Integer.toString(question.getScore()));
-					button.setPrefSize(300, 25);
+					button.setPrefSize(150, 25);
 					centerGridPane.add(button, col, i);
 					button.setOnAction(new EventHandler<ActionEvent>() {
 						@Override
